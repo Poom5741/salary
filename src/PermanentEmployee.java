@@ -1,27 +1,36 @@
-public class PermanentEmployee extends Empolyee {
+public class PermanentEmployee extends Employee {
     private double salary;
+    private double socialSec;
 
-    public void setSalary(double setSalary) {
-        salary = setSalary;
+    public void setEmployee(String setFullName, int setAge, String setDepartment, int setPerformanceScore,int setSalary) {
+        this.fullName = setFullName;
+        this.department = setDepartment;
+        this.age = setAge;
+        this.performanceScore = setPerformanceScore;
+        this.salary = setSalary;
     }
-
     public double getSalary(double getSalary) {
         return this.salary;
     }
 
     public double getMonthlyPayment() {
-        double salary = this.salary;
-        if (this.performanceScore >=8) {
-            salary = salary * 1.03;
+        double salaryReturn = this.salary;
+        if (this.performanceScore >= 8) {
+            salaryReturn = salaryReturn * 1.03;
         }
-        
-        double socialSec = salary * 0.05;
+
+        socialSec = salaryReturn * 0.05;
         if (socialSec <= 750) {
-            salary = salary - socialSec;
-            return salary;
-        } else if (socialSec >750) {
-            salary = salary - 750;
-            return salary;
+            salaryReturn = salaryReturn - socialSec;
+            return salaryReturn;
+        } else if (socialSec > 750) {
+            salaryReturn = salaryReturn - 750;
+            return salaryReturn;
         }
+        return Double.NaN;
+    }
+
+    public double getSocialSec() {
+        return this.socialSec;
     }
 }
