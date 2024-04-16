@@ -1,28 +1,29 @@
 import java.util.ArrayList;
+import java.text.NumberFormat;
 
 public class EmployeeInheritanceTest {
 
     public static void printMonthlyPaymentSlip(Employee employee) {
+        NumberFormat nf = NumberFormat.getInstance();
         String[] name = employee.getFullName().split("-");
 
         if (employee instanceof HourlyEmployee) {
-
-            System.out.println("*************************************************");
-            System.out.printf("\tPayment Slip of %s\n", employee.getFullName().toUpperCase());
-            System.out.println("*************************************************");
+            HourlyEmployee hourlyEmployee = (HourlyEmployee) employee;
+            System.out.println("*************************************************\n");
+            System.out.printf("\tPayment Slip of %s\n\n", hourlyEmployee.getFullName().toUpperCase());
+            System.out.println("*************************************************\n");
             System.out.printf("First Name : %s\tLast Name: %s\n", name[0], name[1]);
-            System.out.printf("Department: %s\tAge: %d\n", employee.getDepartment(), employee.getAge());
-            System.out.printf("Monthly Payment: %d baht\n", ((HourlyEmployee) employee).getMonthlyPayment());
+            System.out.printf("Department: %s\tAge: %d\n", hourlyEmployee.getDepartment(), hourlyEmployee.getAge());
+            System.out.printf("Monthly Payment: %s baht\n\n\n", nf.format(hourlyEmployee.getMonthlyPayment()));
         } else if (employee instanceof PermanentEmployee) {
-
-            System.out.println("*************************************************");
-            System.out.printf("\tPayment Slip of %s\n", employee.getFullName().toUpperCase());
-            System.out.println("*************************************************");
+            PermanentEmployee permanentEmployee = (PermanentEmployee) employee;
+            System.out.println("*************************************************\n");
+            System.out.printf("\tPayment Slip of %s\n\n", permanentEmployee.getFullName().toUpperCase());
+            System.out.println("*************************************************\n");
             System.out.printf("First Name : %s\tLast Name: %s\n", name[0], name[1]);
-            System.out.printf("Department: %s\tAge: %d\n", employee.getDepartment(), employee.getAge());
-            System.out.printf("Monthly Payment: %d baht\tSocial Security: %d baht\n",
-                    ((PermanentEmployee) employee).getMonthlyPayment(),
-                    ((PermanentEmployee) employee).getSocialSec());
+            System.out.printf("Department: %s\t\tAge: %d\n", permanentEmployee.getDepartment(), permanentEmployee.getAge());
+            System.out.printf("Monthly Payment: %s baht Social Security: %s baht\n\n\n",
+            nf.format(permanentEmployee.getMonthlyPayment()),nf.format(permanentEmployee.getSocialSec()));
         }
     }
 
@@ -49,6 +50,8 @@ public class EmployeeInheritanceTest {
         employee5.setEmployee("Veera-Rukdee", 30, "Production", 20, 8);
         employee.add(employee5);
 
-        printMonthlyPaymentSlip(employee.get(3));
+        for (Employee emp : employee) {
+            printMonthlyPaymentSlip(emp);
+        }
     }
 }

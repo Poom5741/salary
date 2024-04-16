@@ -2,7 +2,7 @@ public class HourlyEmployee extends Employee {
     private int workingSessionsPerMonth, workingPerDay = 8;
     private static int MIN_HOURLY_WAGE_RATE = 50;
 
-    public void setEmployee(String setFullName, int setAge, String setDepartment, int setPerformanceScore,int setWorkingSession) {
+    public void setEmployee(String setFullName, int setAge, String setDepartment, int setWorkingSession,int setPerformanceScore) {
         this.fullName = setFullName;
         this.department = setDepartment;
         this.age = setAge;
@@ -12,7 +12,7 @@ public class HourlyEmployee extends Employee {
 
     public double calculatePersonalHourlyWage() {
         double wageRate = 0;
-        if (this.performanceScore < 5) {
+        if (this.performanceScore <= 5) {
             wageRate = MIN_HOURLY_WAGE_RATE;
             return wageRate;
         } else if (this.performanceScore > 5) {

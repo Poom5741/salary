@@ -24,7 +24,8 @@ public class PermanentEmployee extends Employee {
             salaryReturn = salaryReturn - socialSec;
             return salaryReturn;
         } else if (socialSec > 750) {
-            salaryReturn = salaryReturn - 750;
+            socialSec = 750;
+            salaryReturn = salaryReturn - socialSec;
             return salaryReturn;
         }
         return Double.NaN;
