@@ -1,8 +1,19 @@
+/* JIRAYU CHAROENYOST
+ * STD_NUMBER : 6609611790
+ * */
 import java.util.ArrayList;
 import java.text.NumberFormat;
 
+/**
+ * The EmployeeInheritanceTest class is responsible for printing monthly payment slips for employees.
+ */
 public class EmployeeInheritanceTest {
 
+    /**
+     * Prints the monthly payment slip for the given employee.
+     * 
+     * @param employee The employee for whom the payment slip is to be printed.
+     */
     public static void printMonthlyPaymentSlip(Employee employee) {
         NumberFormat nf = NumberFormat.getInstance();
         String[] name = employee.getFullName().split("-");
@@ -27,6 +38,11 @@ public class EmployeeInheritanceTest {
         }
     }
 
+    /**
+     * The main method creates a list of employees and prints their monthly payment slips.
+     * 
+     * @param args The command-line arguments.
+     */
     public static void main(String[] args) {
         ArrayList<Employee> employee = new ArrayList<Employee>();
 
